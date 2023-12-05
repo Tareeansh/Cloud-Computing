@@ -39,14 +39,14 @@ This table stores information about the feedback from users of the application.
 * Endpoint: /users
 * Method: POST
 * Request Body:
-*   username (string): User's name
-*   email (string): User's email
-*   password (string): User's password
+  * username (string): User's name
+  * email (string): User's email
+  * password (string): User's password
 * Response:
   * If successful:
     * Status Code: 200
     * JSON Response:
-      ```markdown
+      ```json
       {
         "error": false,
         "message": "Account successfully registered. Please log in."
@@ -55,97 +55,152 @@ This table stores information about the feedback from users of the application.
   * If email is already taken:
     * Status Code: 400
     * JSON Response:
-      ```
+      ```json
       {
         "error": true,
         "message": "Email already taken."
       }
+      ```
   * If username is already taken:
     * Status Code: 400
     * JSON Response:
-      ```
+      ```json
       {
         "error": true,
         "message": "Username already taken."
       }
+      ```
 
 #### Login
 * Endpoint: /authentications
 * Method: POST
 * Request Body:
-*   username (string): User's name
-*   password (string): User's password
+  * username (string): User's name
+  * password (string): User's password
 * Response:
-*   If successful:
-*     Status Code: 200
-*     JSON Response:
-*     {
-*       "error": false,
-*       "loginResult":
-*       {
-*         "email": "test@example.com",
-*         "username": "Test",
-*         "user_id": "<string_id>",
-*         "access_token": "<access_token>",
-*         "refresh_token": "<refresh_token>"
-*       },
-*       "message": "Login Success."
-*     }
-*   If username or email or password is incorrect:
-*     Status Code: 401
-*     JSON Response:
-*     {
-*       "error": true,
-*       "message": "Email or Password is incorrect."
-*     }
-
+  * If successful:
+    * Status Code: 200
+    * JSON Response:
+      ```json
+      {
+        "error": false,
+        "loginResult":
+        {
+          "email": "test@example.com",
+          "username": "Test",
+          "user_id": "<string_id>",
+          "access_token": "<access_token>",
+          "refresh_token": "<refresh_token>"
+        },
+        "message": "Login Success."
+       }
+      ```
+  * If username or email or password is incorrect:
+    * Status Code: 401
+    * JSON Response:
+      ```json
+      {
+        "error": true,
+        "message": "Email or Password is incorrect."
+      }
+      ```
+      
 #### View Account
 * Endpoint: /users/<users_id>
 * Method: GET
 * Response:
-*   If successful:
-*     Status Code: 200
-*     JSON Response:
-*     {
-*       "users_id": "<users_id>",
-*       "username": "Test",
-*       "email": "test@example.com",
-*       "image <file>": <Image file to classify (JPEG/PNG/JPG)>
-*     }
-*   If users not authenticated:
-*     Status Code: 401
-*     JSON Response:
-*     {
-*       "error": true,
-*       "message": "User not authenticated."
-*     }
+  * If successful:
+    * Status Code: 200
+    * JSON Response:
+      ```json
+      {
+        "users_id": "<users_id>",
+        "username": "Test",
+        "email": "test@example.com",
+        "avatar_url": "<Image file to classify (JPEG/PNG/JPG)>"
+      }
+      ```
+  * If users not authenticated:
+    * Status Code: 401
+    * JSON Response:
+      ```json
+      {
+        "error": true,
+        "message": "User not authenticated."
+      }
+      ```
 
 #### Update Account
 * Endpoint: /users/<users_id>
 * Method: PUT
 * Request Body:
-*   username (string): User's name
-*   email (string): User's email
-*   avatar_url (file): User's avatar saved locally
+  * username (string): User's name
+  * email (string): User's email
+  * avatar_url (file): User's avatar saved locally
 * Response:
-*   If successful:
-*     Status Code: 200
-*     JSON Response:
-*     {
-*       "error": false,
-*       "message": "Update Success."
-*     }
-*   If email is already taken:
-*     Status Code: 400
-*     JSON Response:
-*     {
-*       "error": true,
-*       "message": "Email already taken."
-*     }
-*   If username is already taken:
-*     Status Code: 400
-*     JSON Response:
-*     {
-*       "error": true,
-*       "message": "Username already taken."
-*     }
+  * If successful:
+    * Status Code: 200
+    * JSON Response:
+      ```json
+      {
+        "error": false,
+        "message": "Update Success."
+      }
+      ```
+  * If email is already taken:
+    * Status Code: 400
+    * JSON Response:
+      ```json
+      {
+        "error": true,
+        "message": "Email already taken."
+      }
+      ```
+  * If username is already taken:
+    * Status Code: 400
+    * JSON Response:
+      ```json
+      {
+        "error": true,
+        "message": "Username already taken."
+      }
+
+#### Delete Account
+* Endpoint: /users/<users_id>
+* Method: DELETE
+* Request Body:
+  * password (string): User's password
+* Response:
+  * If successful:
+    * Status Code: 200
+    * JSON Response:
+      ```json
+      {
+        "error": false,
+        "message": "Account deleted successfully."
+      }
+      ```
+  * If password are incorrect:
+    * Status Code: 400
+    * JSON Response:
+      ```json
+      {
+        "error": true,
+        "message": "Password is incorrect."
+      }
+      ```
+#### Logout
+* Endpoint: /authentications
+* Method: POST
+* Request Body:
+  * refresh_token (string): User's get new token
+* Response:
+  * If successful:
+    * Status Code: 200
+    * JSON Response:
+      ```json
+      {
+        "error": false,
+        "message": "Logout successfully."
+      }
+      ```
