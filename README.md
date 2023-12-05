@@ -46,11 +46,12 @@ This table stores information about the feedback from users of the application.
   * If successful:
     * Status Code: 200
     * JSON Response:
-      ```
+      ```markdown
       {
         "error": false,
         "message": "Account successfully registered. Please log in."
       }
+      ```
   * If email is already taken:
     * Status Code: 400
     * JSON Response:
