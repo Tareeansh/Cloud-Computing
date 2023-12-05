@@ -43,27 +43,30 @@ This table stores information about the feedback from users of the application.
 *   email (string): User's email
 *   password (string): User's password
 * Response:
-*   If successful:
-*     Status Code: 200
-*     JSON Response:
-*     {
-*       "error": false,
-*       "message": "Account successfully registered. Please log in."
-*     }
-*   If email is already taken:
-*     Status Code: 400
-*     JSON Response:
-*     {
-*       "error": true,
-*       "message": "Email already taken."
-*     }
-*   If username is already taken:
-*     Status Code: 400
-*     JSON Response:
-*     {
-*       "error": true,
-*       "message": "Username already taken."
-*     }
+  * If successful:
+    * Status Code: 200
+    * JSON Response:
+      ```
+      {
+        "error": false,
+        "message": "Account successfully registered. Please log in."
+      }
+  * If email is already taken:
+    * Status Code: 400
+    * JSON Response:
+      ```
+      {
+        "error": true,
+        "message": "Email already taken."
+      }
+  * If username is already taken:
+    * Status Code: 400
+    * JSON Response:
+      ```
+      {
+        "error": true,
+        "message": "Username already taken."
+      }
 
 #### Login
 * Endpoint: /authentications
