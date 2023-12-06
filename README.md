@@ -220,7 +220,7 @@ This table stores information about the feedback from users of the application.
       ```json
       {
         "tools_name": "<tools_name>",
-        "tags": "["Legs", "Cardiovascular System"]",
+        "tags": ["Legs", "Cardiovascular System"],
         "video_url": "https://example.com/tutorials/treadmil",
         "tools_step": "<tools_step>"
       }
