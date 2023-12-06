@@ -164,6 +164,7 @@ This table stores information about the feedback from users of the application.
         "error": true,
         "message": "Username already taken."
       }
+      ```
 
 #### Delete Account
 * Endpoint: /users/<users_id>
@@ -189,6 +190,7 @@ This table stores information about the feedback from users of the application.
         "message": "Password is incorrect."
       }
       ```
+      
 #### Logout
 * Endpoint: /authentications
 * Method: POST
@@ -202,5 +204,67 @@ This table stores information about the feedback from users of the application.
       {
         "error": false,
         "message": "Logout successfully."
+      }
+      ```
+
+### Tools Service
+#### Upload Tools (Scanning Image)
+* Endpoint: /tools/scan_tools
+* Method: POST
+* Request Body:
+  * image_url (file): User's image
+* Response:
+  * If successful:
+    * Status Code: 200
+    * JSON Response:
+      ```json
+      {
+        "tools_name": "<tools_name>",
+        "tags": "["Legs", "Cardiovascular System"]",
+        "video_url": "https://example.com/tutorials/treadmil",
+        "tools_step": "<tools_step>"
+      }
+      ```
+
+#### Show List Tools
+* Endpoint: /tools
+* Method: POST
+* Request Body:
+  * image_url (file): Server image
+* Response:
+  * If successful:
+    * Status Code: 200
+    * JSON Response:
+      ```json
+      {
+        "photo_url": "<photo_url>",
+        "tools_name": "<tools_name>",
+        "tools_description": "<tools_description>"
+      }
+      ```
+
+### Feedback Service
+* Endpoint: /feedback
+* Method: DELETE
+* Request Body:
+  * user_rating (int): User's rating
+  * user_feedback (string): User's comment feedback
+* Response:
+  * If successful:
+    * Status Code: 200
+    * JSON Response:
+      ```json
+      {
+        "error": false,
+        "message": "Thankyou for giving feedback."
+      }
+      ```
+  * If users not entry rating:
+    * Status Code: 400
+    * JSON Response:
+      ```json
+      {
+        "error": true,
+        "message": "Please, provide a rating between 1 and 5."
       }
       ```
