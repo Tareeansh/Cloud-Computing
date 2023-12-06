@@ -1,5 +1,5 @@
-# Cloud-Computing
-Capstone Project - Cloud Computing Learning Path
+# GymToolKit-bangkit-CloudComputing
+Welcome to the documentation of the GymToolKit: Your Personal Gym Trainer backend application. GymToolKit is an application designed to assist individuals new to the gym environment by identifying various gym equipment based on user-uploaded photos. It allows users to access information about the equipment names and instructions for usage.
 
 ## Database Schema GymToolKit
 ### Table: Users
